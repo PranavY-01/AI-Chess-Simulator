@@ -1,0 +1,64 @@
+.controls-panel {
+    background: var(--panel-bg);
+    border: 1px solid var(--surface-border);
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.panel-title { margin: 0; color: var(--text-main); }
+
+.game-status {
+    padding: 10px 14px;
+    background: var(--surface-soft);
+    border: 1px solid var(--surface-border);
+    border-radius: 8px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.game-status.game-over { color: var(--text-main); font-weight: 700; }
+
+.ai-thinking { color: var(--accent); font-size: 0.85rem; }
+
+.difficulty-section { display: flex; flex-direction: column; gap: 8px; }
+
+.difficulty-label { font-size: 0.8rem; color: var(--text-muted); }
+
+.difficulty-buttons,
+.mode-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+}
+
+.mode-buttons button,
+.difficulty-btn,
+.new-game-btn {
+    border: 1px solid var(--surface-border);
+    background: var(--surface-soft);
+    color: var(--text-main);
+    border-radius: 8px;
+}
+
+.mode-buttons button { padding: 8px; }
+
+.mode-buttons button.active { border-color: var(--accent); }
+
+.difficulty-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
+}
+
+.difficulty-btn.active { border-color: var(--accent); }
+
+.difficulty-num { width: 24px; text-align: center; }
+
+.difficulty-name { font-size: 0.83rem; }
+
+.new-game-btn { padding: 12px 20px; font-weight: 600; }

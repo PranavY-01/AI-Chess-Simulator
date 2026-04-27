@@ -1,0 +1,81 @@
+/* ============================================================
+   MoveHistory — Glass panel
+   ============================================================ */
+.move-history-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: 14px;
+}
+
+.move-history-panel .panel-title {
+  margin: 0 0 10px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-secondary);
+}
+
+.panel-icon {
+  font-size: 1rem;
+}
+
+.move-list {
+  max-height: 140px;
+  overflow-y: auto;
+  margin-bottom: 8px;
+  padding: 4px 0;
+}
+
+.no-moves {
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  padding: 8px 0;
+  text-align: center;
+}
+
+.move-entry {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  transition: background var(--transition-fast);
+}
+
+.move-entry:hover {
+  background: var(--accent-soft);
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 6px;
+}
+
+.nav-btn {
+  flex: 1;
+  padding: 7px 10px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  color: var(--text-secondary);
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: all var(--transition-fast);
+  text-align: center;
+}
+
+.nav-btn:hover:not(:disabled) {
+  border-color: var(--accent-primary);
+  color: var(--text-primary);
+  background: var(--accent-soft);
+}
+
+.nav-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
