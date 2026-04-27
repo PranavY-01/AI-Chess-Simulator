@@ -1,0 +1,16 @@
+/* ============================================================
+   Piece — Chess piece rendering
+   ============================================================ */
+.chess-piece {
+  font-size: 2.6rem;
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+  transition: transform 0.12s ease;
+  z-index: 2;
+}
+
+.square:hover .chess-piece {
+  transform: scale(1.06);
+}
