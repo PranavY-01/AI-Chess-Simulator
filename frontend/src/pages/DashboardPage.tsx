@@ -25,7 +25,7 @@ const DashboardPage: React.FC = () => {
     <div className="dashboard-page">
       {/* Hero */}
       <div className="dashboard-hero">
-        <h1 className="dashboard-hero-title">ChessAlgos</h1>
+        <h1 className="dashboard-hero-title">ChessLabs AI</h1>
         <p className="dashboard-hero-sub">
           Explore AI algorithm behavior through interactive chess simulations.
           Watch algorithms think, compare strategies, and learn how each one decides.

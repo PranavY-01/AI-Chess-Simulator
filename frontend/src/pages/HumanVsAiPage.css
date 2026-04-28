@@ -220,7 +220,7 @@
   gap: 10px;
   padding: 10px 16px;
   background: var(--accent-soft);
-  border: 1px solid rgba(124, 106, 247, 0.15);
+  border: 1px solid rgba(118, 150, 86, 0.15);
   border-radius: var(--radius-md);
   font-size: 0.84rem;
   color: var(--accent-primary);
