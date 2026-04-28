@@ -108,7 +108,7 @@ const MagicBento: React.FC = () => {
       // Update spotlight
       const spotlight = cardEl.querySelector<HTMLDivElement>('.bento-card__spotlight');
       if (spotlight) {
-        spotlight.style.background = `radial-gradient(circle 160px at ${x}px ${y}px, rgba(124,106,247,0.12), transparent 70%)`;
+        spotlight.style.background = `radial-gradient(circle 160px at ${x}px ${y}px, rgba(118,150,86,0.12), transparent 70%)`;
       }
     },
     [],

@@ -16,7 +16,7 @@ const Sidebar: React.FC = () => {
       <div className="sidebar-header">
         <div className="sidebar-logo">♟</div>
         <div className="sidebar-brand">
-          <span className="sidebar-brand-name">ChessAlgos</span>
+          <span className="sidebar-brand-name">ChessLabs AI</span>
           <span className="sidebar-brand-sub">Algorithm Simulator</span>
         </div>
       </div>

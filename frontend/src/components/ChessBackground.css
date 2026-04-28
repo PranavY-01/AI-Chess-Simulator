@@ -10,33 +10,45 @@
   overflow: hidden;
 }
 
-/* ---- Gradient Overlay ---- */
+/* ---- Gradient Overlay — chess green + purple blend ---- */
 .chess-bg__gradient {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 80% 60% at 20% 15%, rgba(118, 150, 86, 0.08), transparent 55%),
-    radial-gradient(ellipse 70% 50% at 80% 85%, rgba(91, 77, 224, 0.06), transparent 50%),
-    radial-gradient(ellipse 60% 80% at 50% 50%, rgba(238, 238, 210, 0.03), transparent 60%);
-  animation: chess-bg-shift 20s ease-in-out infinite alternate;
+    radial-gradient(ellipse 90% 70% at 15% 10%, rgba(118, 150, 86, 0.10), transparent 55%),
+    radial-gradient(ellipse 80% 55% at 85% 85%, rgba(181, 136, 99, 0.08), transparent 50%),
+    radial-gradient(ellipse 70% 80% at 50% 45%, rgba(238, 238, 210, 0.04), transparent 60%),
+    radial-gradient(ellipse 50% 40% at 30% 70%, rgba(118, 150, 86, 0.06), transparent 50%);
+  animation: chess-bg-shift 24s ease-in-out infinite alternate;
 }
 
 @keyframes chess-bg-shift {
-  0%   { opacity: 0.8; transform: scale(1); }
-  50%  { opacity: 1;   transform: scale(1.05); }
-  100% { opacity: 0.7; transform: scale(1.02) translateX(10px); }
+  0%   { opacity: 0.85; transform: scale(1) rotate(0deg); }
+  50%  { opacity: 1;    transform: scale(1.04) rotate(0.3deg); }
+  100% { opacity: 0.75; transform: scale(1.02) translateX(8px) rotate(-0.2deg); }
 }
 
-/* ---- Subtle Chessboard Grid ---- */
+/* ---- Diagonal Chessboard Grid ---- */
 .chess-bg__grid {
   position: absolute;
-  inset: 0;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    repeating-conic-gradient(
+      rgba(118, 150, 86, 0.04) 0% 25%,
+      rgba(238, 238, 210, 0.03) 25% 50%
+    );
   background-size: 68px 68px;
-  mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, rgba(0, 0, 0, 0.5), transparent 80%);
-  -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, rgba(0, 0, 0, 0.5), transparent 80%);
+  transform: rotate(3deg);
+  animation: grid-drift 60s linear infinite;
+  mask-image: radial-gradient(ellipse 40% 40% at 50% 50%, rgba(0, 0, 0, 0.6), transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 40% 40% at 50% 50%, rgba(0, 0, 0, 0.6), transparent 80%);
+}
+
+@keyframes grid-drift {
+  0%   { transform: rotate(3deg) translate(0, 0); }
+  100% { transform: rotate(3deg) translate(68px, 68px); }
 }
 
 /* ---- Floating Piece Silhouettes ---- */
@@ -49,90 +61,110 @@
   position: absolute;
   font-size: clamp(2rem, 5vw, 4rem);
   opacity: 0;
-  filter: blur(3px);
-  color: rgba(124, 106, 247, 0.08);
+  filter: blur(2.5px);
+  color: rgba(118, 150, 86, 0.10);
   user-select: none;
   will-change: transform, opacity;
 }
 
-/* ---- Floating Orbs ---- */
+/* ---- Floating Orbs — green / purple / brown glow patches ---- */
 .chess-bg__orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(60px);
+  filter: blur(70px);
   will-change: transform, opacity;
 }
 
 .chess-bg__orb--1 {
-  width: 300px;
-  height: 300px;
-  top: 10%;
-  left: 5%;
-  background: rgba(118, 150, 86, 0.06);
-  animation: orb-float-1 25s ease-in-out infinite;
+  width: 340px;
+  height: 340px;
+  top: 8%;
+  left: 3%;
+  background: rgba(118, 150, 86, 0.08);
+  animation: orb-float-1 28s ease-in-out infinite;
 }
 
 .chess-bg__orb--2 {
-  width: 250px;
-  height: 250px;
-  bottom: 15%;
-  right: 10%;
-  background: rgba(91, 77, 224, 0.05);
-  animation: orb-float-2 30s ease-in-out infinite;
+  width: 280px;
+  height: 280px;
+  bottom: 12%;
+  right: 8%;
+  background: rgba(181, 136, 99, 0.06);
+  animation: orb-float-2 34s ease-in-out infinite;
 }
 
 .chess-bg__orb--3 {
-  width: 200px;
-  height: 200px;
-  top: 50%;
+  width: 220px;
+  height: 220px;
+  top: 45%;
   left: 50%;
-  background: rgba(238, 238, 210, 0.04);
-  animation: orb-float-3 22s ease-in-out infinite;
+  background: rgba(238, 238, 210, 0.05);
+  animation: orb-float-3 26s ease-in-out infinite;
+}
+
+.chess-bg__orb--4 {
+  width: 180px;
+  height: 180px;
+  top: 70%;
+  left: 20%;
+  background: rgba(118, 150, 86, 0.05);
+  animation: orb-float-4 32s ease-in-out infinite;
 }
 
 @keyframes orb-float-1 {
   0%, 100% { transform: translate(0, 0) scale(1); }
-  33%      { transform: translate(40px, 30px) scale(1.1); }
-  66%      { transform: translate(-20px, 50px) scale(0.95); }
+  33%      { transform: translate(50px, 35px) scale(1.12); }
+  66%      { transform: translate(-25px, 60px) scale(0.94); }
 }
 
 @keyframes orb-float-2 {
   0%, 100% { transform: translate(0, 0) scale(1); }
-  33%      { transform: translate(-30px, -40px) scale(1.05); }
-  66%      { transform: translate(50px, -20px) scale(0.9); }
+  33%      { transform: translate(-35px, -50px) scale(1.08); }
+  66%      { transform: translate(60px, -25px) scale(0.92); }
 }
 
 @keyframes orb-float-3 {
   0%, 100% { transform: translate(-50%, -50%) scale(1); }
-  33%      { transform: translate(calc(-50% + 60px), calc(-50% - 30px)) scale(1.15); }
-  66%      { transform: translate(calc(-50% - 40px), calc(-50% + 40px)) scale(0.95); }
+  33%      { transform: translate(calc(-50% + 70px), calc(-50% - 35px)) scale(1.15); }
+  66%      { transform: translate(calc(-50% - 45px), calc(-50% + 45px)) scale(0.93); }
+}
+
+@keyframes orb-float-4 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%      { transform: translate(30px, -40px) scale(1.1); }
+  66%      { transform: translate(-50px, 20px) scale(0.95); }
 }
 
 /* ---- Light theme adjustments ---- */
 :root[data-theme='light'] .chess-bg__gradient {
   background:
-    radial-gradient(ellipse 80% 60% at 20% 15%, rgba(118, 150, 86, 0.06), transparent 55%),
-    radial-gradient(ellipse 70% 50% at 80% 85%, rgba(91, 77, 224, 0.04), transparent 50%),
-    radial-gradient(ellipse 60% 80% at 50% 50%, rgba(238, 238, 210, 0.05), transparent 60%);
+    radial-gradient(ellipse 90% 70% at 15% 10%, rgba(118, 150, 86, 0.07), transparent 55%),
+    radial-gradient(ellipse 80% 55% at 85% 85%, rgba(181, 136, 99, 0.05), transparent 50%),
+    radial-gradient(ellipse 70% 80% at 50% 45%, rgba(238, 238, 210, 0.06), transparent 60%),
+    radial-gradient(ellipse 50% 40% at 30% 70%, rgba(118, 150, 86, 0.04), transparent 50%);
 }
 
 :root[data-theme='light'] .chess-bg__grid {
   background-image:
-    linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+    repeating-conic-gradient(
+      rgba(118, 150, 86, 0.035) 0% 25%,
+      rgba(238, 238, 210, 0.05) 25% 50%
+    );
 }
 
 :root[data-theme='light'] .chess-bg__piece {
-  color: rgba(91, 77, 224, 0.06);
+  color: rgba(118, 150, 86, 0.07);
 }
 
-:root[data-theme='light'] .chess-bg__orb--1 { background: rgba(118, 150, 86, 0.04); }
-:root[data-theme='light'] .chess-bg__orb--2 { background: rgba(91, 77, 224, 0.04); }
-:root[data-theme='light'] .chess-bg__orb--3 { background: rgba(238, 238, 210, 0.06); }
+:root[data-theme='light'] .chess-bg__orb--1 { background: rgba(118, 150, 86, 0.05); }
+:root[data-theme='light'] .chess-bg__orb--2 { background: rgba(181, 136, 99, 0.04); }
+:root[data-theme='light'] .chess-bg__orb--3 { background: rgba(238, 238, 210, 0.07); }
+:root[data-theme='light'] .chess-bg__orb--4 { background: rgba(118, 150, 86, 0.04); }
 
 /* ---- Reduced motion / Mobile ---- */
 @media (prefers-reduced-motion: reduce) {
   .chess-bg__gradient,
+  .chess-bg__grid,
   .chess-bg__orb,
   .chess-bg__piece {
     animation: none !important;
@@ -141,6 +173,7 @@
 
 @media (max-width: 768px) {
   .chess-bg__piece { display: none; }
-  .chess-bg__orb { filter: blur(80px); opacity: 0.5; }
+  .chess-bg__grid  { display: none; }
+  .chess-bg__orb   { filter: blur(90px); opacity: 0.4; }
   .chess-bg__gradient { animation-duration: 40s; }
 }

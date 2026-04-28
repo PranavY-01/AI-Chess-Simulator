@@ -1,12 +1,15 @@
 /* ============================================================
-   DashboardPage — Landing / Home
+   DashboardPage — Enhanced Landing / Home
    ============================================================ */
 .dashboard-page {
   animation: pageEnter var(--transition-morph) both;
   max-width: 1100px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
+/* ---- Hero ---- */
 .dashboard-hero {
   text-align: center;
   padding: 48px 0 40px;
@@ -17,10 +20,17 @@
   font-weight: 900;
   letter-spacing: -0.04em;
   margin-bottom: 12px;
-  background: linear-gradient(135deg, var(--text-primary), var(--accent-primary));
+  background: linear-gradient(135deg, var(--text-primary) 0%, var(--chess-green) 45%, var(--accent-primary) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  animation: hero-gradient-shift 6s ease-in-out infinite alternate;
+  background-size: 200% 200%;
+}
+
+@keyframes hero-gradient-shift {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
 }
 
 .dashboard-hero-sub {
@@ -31,7 +41,9 @@
   line-height: 1.6;
 }
 
-/* Mode Cards */
+/* ============================================================
+   Mode Cards — enhanced with glow borders + depth
+   ============================================================ */
 .dashboard-modes {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -42,11 +54,12 @@
 .dashboard-mode-card {
   background: var(--glass-bg);
   backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-xl);
   padding: 32px 28px;
   cursor: pointer;
-  transition: all var(--transition-base);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   text-align: left;
   display: flex;
   flex-direction: column;
@@ -55,6 +68,7 @@
   overflow: hidden;
 }
 
+/* Accent stripe at top */
 .dashboard-mode-card::before {
   content: '';
   position: absolute;
@@ -62,18 +76,37 @@
   left: 0;
   right: 0;
   height: 3px;
-  background: var(--accent-gradient);
+  background: linear-gradient(135deg, var(--chess-green), var(--accent-primary));
   opacity: 0;
   transition: opacity var(--transition-base);
 }
 
+/* Subtle inner glow overlay */
+.dashboard-mode-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle at 50% 0%, rgba(118, 150, 86, 0.04), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
 .dashboard-mode-card:hover {
-  border-color: var(--glass-border-hover);
-  box-shadow: var(--glass-shadow-lg), var(--glass-glow);
-  transform: translateY(-4px);
+  border-color: rgba(118, 150, 86, 0.25);
+  box-shadow:
+    var(--glass-shadow-lg),
+    0 0 30px rgba(118, 150, 86, 0.08),
+    0 0 60px rgba(118, 150, 86, 0.05);
+  transform: translateY(-4px) scale(1.02);
 }
 
 .dashboard-mode-card:hover::before {
+  opacity: 1;
+}
+
+.dashboard-mode-card:hover::after {
   opacity: 1;
 }
 
@@ -84,8 +117,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--accent-soft);
+  background: var(--chess-green-soft);
   border-radius: var(--radius-lg);
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.dashboard-mode-card:hover .dashboard-mode-icon {
+  background: rgba(118, 150, 86, 0.18);
+  transform: scale(1.08);
 }
 
 .dashboard-mode-title {
@@ -108,14 +147,17 @@
   font-weight: 600;
   color: var(--accent-primary);
   margin-top: auto;
-  transition: gap var(--transition-fast);
+  transition: gap var(--transition-fast), color var(--transition-fast);
 }
 
 .dashboard-mode-card:hover .dashboard-mode-action {
   gap: 10px;
+  color: var(--chess-green);
 }
 
-/* Stats */
+/* ============================================================
+   Stats Cards — enhanced with gradient accents + hover depth
+   ============================================================ */
 .dashboard-stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -126,19 +168,45 @@
 .dashboard-stat-card {
   background: var(--glass-bg);
   backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-lg);
   padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 4px;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.dashboard-stat-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--chess-green), var(--accent-primary));
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.dashboard-stat-card:hover {
+  border-color: var(--glass-border-hover);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: var(--glass-shadow-lg), 0 0 20px rgba(118, 150, 86, 0.06);
+}
+
+.dashboard-stat-card:hover::after {
+  opacity: 1;
 }
 
 .dashboard-stat-value {
   font-size: 1.8rem;
   font-weight: 800;
   letter-spacing: -0.03em;
-  background: var(--accent-gradient);
+  background: linear-gradient(135deg, var(--chess-green), var(--accent-primary));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -152,7 +220,9 @@
   color: var(--text-muted);
 }
 
-/* Recent Games */
+/* ============================================================
+   Recent Games — subtle hover enhancements
+   ============================================================ */
 .dashboard-recent {
   margin-bottom: 32px;
 }
@@ -179,15 +249,18 @@
   gap: 16px;
   background: var(--glass-bg);
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-md);
   padding: 14px 18px;
-  transition: all var(--transition-fast);
+  transition: all 0.25s ease;
 }
 
 .dashboard-recent-item:hover {
-  border-color: var(--glass-border-hover);
-  background: rgba(124, 106, 247, 0.04);
+  border-color: rgba(118, 150, 86, 0.18);
+  background: rgba(118, 150, 86, 0.04);
+  transform: translateX(4px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 }
 
 .dashboard-recent-mode {
@@ -197,8 +270,8 @@
   letter-spacing: 0.06em;
   padding: 4px 8px;
   border-radius: var(--radius-sm);
-  background: var(--accent-soft);
-  color: var(--accent-primary);
+  background: var(--chess-green-soft);
+  color: var(--chess-green);
   white-space: nowrap;
 }
 
@@ -251,6 +324,9 @@
   border-radius: var(--radius-lg);
 }
 
+/* ============================================================
+   Responsive
+   ============================================================ */
 @media (max-width: 700px) {
   .dashboard-modes {
     grid-template-columns: 1fr;
@@ -260,5 +336,9 @@
   }
   .dashboard-hero-title {
     font-size: 1.8rem;
+  }
+  .dashboard-mode-card:hover,
+  .dashboard-stat-card:hover {
+    transform: none;
   }
 }

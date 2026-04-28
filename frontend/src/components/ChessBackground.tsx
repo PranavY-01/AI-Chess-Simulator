@@ -72,6 +72,7 @@ const ChessBackground: React.FC = () => {
       <div className="chess-bg__orb chess-bg__orb--1" />
       <div className="chess-bg__orb chess-bg__orb--2" />
       <div className="chess-bg__orb chess-bg__orb--3" />
+      <div className="chess-bg__orb chess-bg__orb--4" />
 
       {/* Floating chess-piece silhouettes */}
       <div className="chess-bg__pieces" ref={piecesRef}>

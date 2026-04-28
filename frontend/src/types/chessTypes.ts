@@ -1,5 +1,5 @@
 /**
- * Chess type definitions for the ChessAlgos frontend.
+ * Chess type definitions for the ChessLabs AI frontend.
  */
 import type { AILevel } from '../config/demonstrators';
 

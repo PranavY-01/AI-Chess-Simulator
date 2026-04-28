@@ -14,7 +14,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 6px 24px rgba(124, 106, 247, 0.4);
+  box-shadow: 0 6px 24px rgba(118, 150, 86, 0.4);
   z-index: 1000;
   transition: all var(--transition-base);
   cursor: pointer;
@@ -23,7 +23,7 @@
 
 .ai-companion-toggle:hover {
   transform: scale(1.08);
-  box-shadow: 0 8px 30px rgba(124, 106, 247, 0.5);
+  box-shadow: 0 8px 30px rgba(118, 150, 86, 0.5);
 }
 
 .ai-companion-toggle.open {
@@ -159,7 +159,7 @@
 .ai-companion-msg.ai {
   align-self: flex-start;
   background: var(--accent-soft);
-  border: 1px solid rgba(124, 106, 247, 0.15);
+  border: 1px solid rgba(118, 150, 86, 0.15);
   color: var(--text-primary);
   border-bottom-left-radius: 4px;
 }
@@ -252,7 +252,7 @@
 .ai-companion-explain-btn {
   width: 100%;
   padding: 9px 16px;
-  border: 1px solid rgba(124, 106, 247, 0.25);
+  border: 1px solid rgba(118, 150, 86, 0.25);
   border-radius: var(--radius-md);
   background: var(--accent-soft);
   color: var(--text-primary);
@@ -271,7 +271,7 @@
   color: #fff;
   border-color: transparent;
   transform: translateY(-1px);
-  box-shadow: 0 4px 16px rgba(124, 106, 247, 0.3);
+  box-shadow: 0 4px 16px rgba(118, 150, 86, 0.3);
 }
 
 .ai-companion-explain-btn:disabled {
@@ -282,7 +282,7 @@
 .spinner-sm {
   width: 14px;
   height: 14px;
-  border: 2px solid rgba(124, 106, 247, 0.3);
+  border: 2px solid rgba(118, 150, 86, 0.3);
   border-top-color: var(--accent-primary);
   border-radius: 50%;
   animation: spin 0.7s linear infinite;

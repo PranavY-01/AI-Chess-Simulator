@@ -1,5 +1,5 @@
 /**
- * API client for ChessAlgos backend.
+ * API client for ChessLabs AI backend.
  */
 import type {
     GameState,
