@@ -1,16 +1,51 @@
 /* ============================================================
-   Piece — Chess piece rendering
+   Piece — Classic Staunton-style chess piece rendering
    ============================================================ */
 .chess-piece {
-  font-size: 2.6rem;
+  font-size: 2.9rem;
   line-height: 1;
   user-select: none;
   pointer-events: none;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
   transition: transform 0.12s ease;
   z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* White pieces — bright white fill with crisp dark outline */
+.piece-white {
+  color: #ffffff;
+  text-shadow:
+    -1px  0   0 #000,
+     1px  0   0 #000,
+     0   -1px 0 #000,
+     0    1px 0 #000,
+    -1px -1px 0 #000,
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000,
+     0    0  3px rgba(0, 0, 0, 0.15);
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+}
+
+/* Black pieces — solid dark fill with subtle edge definition */
+.piece-black {
+  color: #1a1a1a;
+  text-shadow:
+    -0.5px  0     0 #000,
+     0.5px  0     0 #000,
+     0     -0.5px 0 #000,
+     0      0.5px 0 #000,
+     0      0    2px rgba(0, 0, 0, 0.3);
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.15));
 }
 
 .square:hover .chess-piece {
   transform: scale(1.06);
+}
+
+.chess-piece.dragging {
+  transform: scale(1.15);
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
 }

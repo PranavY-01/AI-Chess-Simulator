@@ -1,0 +1,165 @@
+/* ============================================================
+   MagicBento — Interactive animated feature grid
+   ============================================================ */
+
+.magic-bento {
+  margin-top: 48px;
+  margin-bottom: 56px;
+}
+
+.magic-bento__title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-secondary);
+}
+
+.magic-bento__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+/* ---- Individual Card ---- */
+.bento-card {
+  position: relative;
+  padding: 28px 24px;
+  border-radius: var(--radius-lg);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  overflow: hidden;
+  cursor: default;
+  transition:
+    border-color var(--transition-base),
+    box-shadow var(--transition-base),
+    transform var(--transition-base);
+  will-change: transform;
+}
+
+.bento-card:hover {
+  border-color: var(--glass-border-hover);
+  box-shadow: var(--glass-shadow-lg), var(--glass-glow);
+  transform: translateY(-3px);
+}
+
+/* ---- Spotlight ---- */
+.bento-card__spotlight {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  border-radius: inherit;
+}
+
+.bento-card:hover .bento-card__spotlight {
+  opacity: 1;
+}
+
+/* ---- Particles ---- */
+.bento-card__particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.bento-card__particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--accent-primary);
+  opacity: 0;
+}
+
+/* ---- Ripple ---- */
+.bento-card__ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(124, 106, 247, 0.15);
+  transform: scale(0);
+  pointer-events: none;
+  animation: bento-ripple 0.6s ease-out forwards;
+}
+
+@keyframes bento-ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* ---- Card Content ---- */
+.bento-card__icon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  font-size: 1.3rem;
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.bento-card__icon--analysis    { background: rgba(52, 211, 153, 0.12); color: #34d399; }
+.bento-card__icon--evaluation  { background: rgba(124, 106, 247, 0.12); color: #7c6af7; }
+.bento-card__icon--threat      { background: rgba(248, 113, 113, 0.12); color: #f87171; }
+.bento-card__icon--strategy    { background: rgba(251, 191, 36, 0.12);  color: #fbbf24; }
+.bento-card__icon--suggestions { background: rgba(96, 165, 250, 0.12);  color: #60a5fa; }
+.bento-card__icon--insights    { background: rgba(167, 139, 250, 0.12); color: #a78bfa; }
+
+.bento-card__name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 6px;
+  position: relative;
+  z-index: 1;
+}
+
+.bento-card__desc {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  position: relative;
+  z-index: 1;
+}
+
+/* ---- Accent stripe at top of card ---- */
+.bento-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--accent-gradient);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.bento-card:hover::before {
+  opacity: 1;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 900px) {
+  .magic-bento__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .magic-bento__grid {
+    grid-template-columns: 1fr;
+  }
+}
