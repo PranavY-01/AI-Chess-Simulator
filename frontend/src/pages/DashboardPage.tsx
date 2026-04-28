@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useGameStore } from '../store/gameStore';
+import MagicBento from '../components/MagicBento';
 import './DashboardPage.css';
 
 function getResultLabel(result: string): { text: string; cls: string } {
@@ -107,6 +108,9 @@ const DashboardPage: React.FC = () => {
           </div>
         )}
       </div>
+
+      {/* AI Capabilities Bento Grid */}
+      <MagicBento />
     </div>
   );
 };
